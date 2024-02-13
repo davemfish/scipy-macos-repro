@@ -6,29 +6,25 @@ on:
 
   workflow_dispatch:
 
-defaults:
-  run:
-    shell: bash -l {0}
-
 jobs:
   demo:
     runs-on: macos-latest
     steps:
-    - name: Setup conda environment
+    - name: Setup python environment
       uses: mamba-org/setup-micromamba@v1
       with:
+        environment-name: env
         condarc: |
               channels:
                 - conda-forge
+        create-args: >-
+          python=3.11
+          scipy
         init-shell: bash
-
-    - name: Install scipy
-      shell: bash -l {0}
-      run: mamba install scipy
 
     - name: list environment
       shell: bash -l {0}
-      run: mamba list
+      run: micromamba list
 
     - name: Run
       shell: bash -l {0}
