@@ -19,6 +19,7 @@ jobs:
                 - conda-forge
         create-args: >-
           python=3.11
+          packaging
           scipy
         init-shell: bash
 
