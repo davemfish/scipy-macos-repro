@@ -32,8 +32,8 @@ jobs:
 
     - name: Build binaries
       shell: bash -l {0}
-      run: pyinstaller repro.py
+      run: python repro.py
 
-    - name: Run
-      shell: bash -l {0}
-      run: ./dist/repro/repro
+    # - name: Run
+    #   shell: bash -l {0}
+    #   run: ./dist/repro/repro
