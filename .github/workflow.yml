@@ -1,6 +1,10 @@
 name: Demo
 
-on: [push]
+on:
+  push:
+    branches: [ "main" ]
+
+  workflow_dispatch:
 
 defaults:
   run:
@@ -8,7 +12,6 @@ defaults:
 
 jobs:
   demo:
-    name: Demo
     runs-on: macos-latest
     steps:
     - name: Setup conda environment
