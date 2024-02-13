@@ -1,0 +1,32 @@
+name: Demo
+
+on: [push]
+
+defaults:
+  run:
+    shell: bash -l {0}
+
+jobs:
+  demo:
+    name: Demo
+    runs-on: macos-latest
+    steps:
+    - name: Setup conda environment
+      uses: mamba-org/setup-micromamba@v1
+      with:
+        condarc: |
+              channels:
+                - conda-forge
+        init-shell: bash
+
+    - name: Install scipy
+      shell: bash -l {0}
+      run: mamba install scipy
+
+    - name: list environment
+      shell: bash -l {0}
+      run: mamba list
+
+    - name: Run
+      shell: bash -l {0}
+      run: python -c "from scipy._lib._testutils import PytestTester"
