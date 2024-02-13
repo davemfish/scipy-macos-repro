@@ -30,10 +30,14 @@ jobs:
 
     - uses: actions/checkout@v3
 
+    - name: Run from conda-env
+      shell: bash -l {0}
+      run: python repro.py
+
     - name: Build binaries
       shell: bash -l {0}
       run: pyinstaller repro.py
 
-    - name: Run
+    - name: Run binaries
       shell: bash -l {0}
       run: ./dist/repro/repro
