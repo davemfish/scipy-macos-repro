@@ -21,6 +21,7 @@ jobs:
           python=3.11
           packaging
           scipy
+          pyinstaller
         init-shell: bash
 
     - name: list environment
@@ -29,6 +30,10 @@ jobs:
 
     - uses: actions/checkout@v3
 
+    - name: Build binaries
+      shell: bash -l {0}
+      run: pyinstaller repro.py
+
     - name: Run
       shell: bash -l {0}
-      run: python repro.py
+      run: ./dist/repro
