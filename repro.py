@@ -1,2 +1,3 @@
-from scipy._lib._testutils import PytestTester
-print(0)
+from packaging.tags import sys_tags
+_tags = list(sys_tags())
+print(_tags)
